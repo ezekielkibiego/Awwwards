@@ -6,5 +6,27 @@
 <div class="container-fluid">
     <h1>Welcome Home</h1>
 </div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        {% for pros in pro %}
+        <div class="card-group">
+          <div class="card">
+            <img class="card-img-top" src="{{pros.image.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{pros.title}}</h5>
+              <p class="card-text">{{pros.description}}</p>
+              <a href="{{pros.url}}">{{pros.url}}</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{pros.date|date}}</small>
+            </div>
+          </div>
+          
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+  </div>
 
 {% endblock %}
