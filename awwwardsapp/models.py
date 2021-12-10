@@ -24,9 +24,10 @@ class Profile(models.Model):
         return self.user.username
 
 class Project(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title = models.CharField(max_length=50)
-    description = models.TextField()
+    description = models.TextField(max_length=300)
+    category = models.TextField(max_length=50,null=True)
     image = CloudinaryField("image")
     url = models.URLField(null=True)
     location = models.CharField(max_length=50, default="Nairobi")
