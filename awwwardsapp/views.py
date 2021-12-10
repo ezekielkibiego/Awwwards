@@ -10,8 +10,8 @@ from awwwardsapp.models import Profile
 
 
 def index(request):
-  
-    return render(request, 'index.html')
+    pro = Project.objects.all().order_by('-id')
+    return render(request, 'index.html',{'pro': pro})
 
 
 @login_required(login_url="/accounts/login/")
