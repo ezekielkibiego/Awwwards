@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_photo = CloudinaryField("image")
-    bio = models.TextField(max_length=250)
-    contact = models.CharField(max_length=250)
+    bio = models.TextField(max_length=300)
+    contact = models.CharField(max_length=100)
 
     def save_profile(self):
         self.save()
@@ -25,11 +25,11 @@ class Profile(models.Model):
 
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=50)
     description = models.TextField()
     image = CloudinaryField("image")
     url = models.URLField(blank=True)
-    location = models.CharField(max_length=100, default="Nairobi")
+    location = models.CharField(max_length=50, default="Nairobi")
     date = models.DateTimeField(auto_now_add=True, null=True)
 
     @classmethod
