@@ -28,7 +28,7 @@ class Project(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     image = CloudinaryField("image")
-    url = models.URLField(blank=True)
+    url = models.URLField(null=True)
     location = models.CharField(max_length=50, default="Nairobi")
     date = models.DateTimeField(auto_now_add=True, null=True)
 
