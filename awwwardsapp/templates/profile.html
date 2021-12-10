@@ -35,51 +35,12 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class = "" data-toggle ="modal" data-target="#showPicModal">
-            <button>Add Profile</button>
-        </div>
-    </div>
-    <div class="modal fade" id="showPicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered mode" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalPictureTitle">title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="col-md-3">
+                <form action="/pro/project/">
+                    <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)"value="Post a Project" />
+                </form>
             </div>
-            <div class="modal-body">
-              <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form }}
-                <button type="submit">Add Profile</button>
-              </form>
-            </div>
-            <div class="modal-footer">
 </section>
-<!-- <div class="container">
-    <h3>posts</h3>
-        {% for image in images %}
-        <div class="">
-            <h3>{{ image.photo_name }}</h3>
-            
-                <div class="">
-                    <img src="{{ image.image.url }}" class="images" alt="Image">
-                </div>
-                <p>{{ image.photo_caption }}</p>
-                <p>{{ image.posted_at }}</p>
 
-        </div>
-        {% empty %}
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="alert alert-info" role="alert">
-                No images!
-            </div>
-        </div>
-        {% endfor %}
-
-</div>
-{% endblock %} -->
+{% endblock %}
 
