@@ -5,8 +5,7 @@ from .models import *
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
-
+from .forms import ProProjectForm
 from awwwardsapp.models import Profile
 
 
@@ -105,4 +104,14 @@ def delete_project(request, id):
     project.delete_project()
     return redirect("/profile", {"success": "Deleted Project Successfully"})
 
-
+@login_required(login_url='/accounts/login/')
+def pro(request):
+    if request.method == "POST":
+        form = ProProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.save()
+        return redirect('/')
+    else:
+        form = ProProjectForm()
+    return render(request, 'pro.html', {"form": form})
