@@ -16,7 +16,7 @@ def index(request):
 
 
 @login_required(login_url="/accounts/login/")
-def profile(request):  # view profile
+def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     project = Project.objects.filter(user_id=current_user.id).all() 
@@ -68,8 +68,41 @@ def update_profile(request):
         user.save()
 
         return redirect("/profile", {"success": "Profile Updated Successfully"})
-
-        
     else:
         return render(request, "profile.html", {"danger": "Profile Update Failed"})
+
+@login_required(login_url="/accounts/login/")
+def save_project(request):
+    if request.method == "POST":
+
+        current_user = request.user
+
+        title = request.POST["title"]
+        location = request.POST["location"]
+        description = request.POST["description"]
+        url = request.POST["url"]
+        image = request.FILES["image"]
+        image = cloudinary.uploader.upload(image, crop="limit", width=500, height=500)
+        image_url = image["url"]
+
+        project = Project(
+            user_id=current_user.id,
+            title=title,
+            location=location,
+            description=description,
+            url=url,
+            image=image_url,
+        )
+        project.save_project()
+
+        return redirect("/profile", {"success": "Project Saved Successfully"})
+    else:
+        return render(request, "profile.html", {"danger": "Project Save Failed"})
+
+@login_required(login_url="/accounts/login/")
+def delete_project(request, id):
+    project = Project.objects.get(id=id)
+    project.delete_project()
+    return redirect("/profile", {"success": "Deleted Project Successfully"})
+
 
