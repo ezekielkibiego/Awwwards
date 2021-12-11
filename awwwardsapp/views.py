@@ -5,7 +5,7 @@ from .models import *
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from .forms import ProProjectForm
+from .forms import ProProjectForm, UpdateProfileForm
 from awwwardsapp.models import Profile
 
 
@@ -115,3 +115,18 @@ def pro(request):
     else:
         form = ProProjectForm()
     return render(request, 'pro.html', {"form": form})
+
+def update_profile(request,id):
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(user_id = user)
+    form = UpdateProfileForm(instance=profile)
+    if request.method == "POST":
+            form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
+            if form.is_valid():  
+                
+                profile = form.save(commit=False)
+                profile.save()
+                return redirect('profile') 
+            
+    ctx = {"form":form}
+    return render(request, 'update_profile.html', ctx)
