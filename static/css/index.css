@@ -5,50 +5,52 @@ body {
     font-family: "Lato", sans-serif;
   }
   
-  .sidepanel  {
+  .overlay {
+    height: 100%;
     width: 0;
     position: fixed;
-    
-    height: 150px;
+    z-index: 1;
     top: 0;
     left: 0;
-    background-color: crimson;
+    background-color: rgb(214, 16, 16);
+    background-color: rgba(179, 20, 20, 0.9);
     overflow-x: hidden;
-    transition: 0.2s;
-    padding-top: 30px;
+    transition: 0.5s;
   }
   
-  .sidepanel a {
-    padding: 5px 5px 5px 5px;
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 36px;
     color: #818181;
     display: block;
-    transition: 0.01s;
-    float: right;
+    transition: 0.3s;
   }
   
-  .sidepanel a:hover {
+  .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
-    float: right;
   }
   
-  .sidepanel .closebtn {
+  .overlay .closebtn {
     position: absolute;
-    top: 0;
-    right: 15px;
-    font-size: 15px;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
   }
   
-  .openbtn {
-    font-size: 15px;
-    cursor: pointer;
-    background-color: crimson;
-    color: white;
-    padding: 7px 10px;
-    border: none;
-  }
-  
-  .openbtn:hover {
-    background-color:#444;
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
   }
