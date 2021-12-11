@@ -3,34 +3,36 @@
 {% block content %}
 {{block.super}}
 <br><br>
+
 <div class="container-fluid">
     <h1 class="text-center">Welcome Home</h1>
-</div>
-<div class="container-fluid">
     <div class="row">
-      <div class="col-md-4">
         {% for pros in pro %}
-        <div class="card-group">
-          <div class="card">
-              <p>{{pros.user}}</p>
-            <img class="card-img-top" src="{{pros.image.url}}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{pros.title}}</h5>
-              <p class="card-text">{{pros.description}}</p>
-              <a href="{{pros.url}}">{{pros.url}}</a>
+        <div class="col-md-6">
+            
+            <div class="card-group">
+                <div class="card">
+                    <p>{{pros.user}}</p>
+                    <img class="card-img-top" src="{{pros.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{pros.title}}</h5>
+                        <p class="card-text">{{pros.description}}</p>
+                        <p class="card-text">{{pros.category}}</p>
+                        <a href="{{pros.url}}">{{pros.url}}</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{pros.date|date}}</small>
+                    </div>
+                </div>
+
             </div>
-            <div class="card-footer">
-              <small class="text-muted">{{pros.date|date}}</small>
-            </div>
-          </div>
-          
-      </div>
-      {% endfor %}
+            
+        </div>
+        {% endfor %}
     </div>
-    </div>
-  </div>
+</div>
 
 
-  
+
 
 {% endblock %}
