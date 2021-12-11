@@ -20,7 +20,7 @@ def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     project = Project.objects.filter(user_id=current_user.id).all() 
-    return render(request, "profile.html", {"profile": profile, "images": project})
+    return render(request, "profile.html", {"profile": profile, "project": project})
 
 
 
@@ -112,5 +112,5 @@ def search(request):
 
     else:
         message = "You haven't searched for any project"
-        return render(request, 'search.html',{"message1":message})
+        return render(request, 'search.html',{"message":message})
 
