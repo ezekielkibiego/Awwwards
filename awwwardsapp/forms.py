@@ -1,4 +1,4 @@
-from .models import Project
+from .models import Project,Profile
 from django.forms import ModelForm
 from django import forms
 
@@ -12,3 +12,8 @@ class ProProjectForm(ModelForm):
                    'location',
                    'url',
         )
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_photo','contact')
