@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -5,7 +6,7 @@ from .models import *
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from .forms import ProProjectForm, UpdateProfileForm
+from .forms import ProProjectForm, ProfileForm, UpdateProfileForm
 from awwwardsapp.models import Profile
 
 
@@ -22,53 +23,6 @@ def profile(request):
     return render(request, "profile.html", {"profile": profile, "images": project})
 
 
-@login_required(login_url="/accounts/login/")
-def update_profile(request):
-    if request.method == "POST":
-
-        current_user = request.user
-
-        first_name = request.POST["first_name"]
-        last_name = request.POST["last_name"]
-        username = request.POST["username"]
-        email = request.POST["email"]
-
-        bio = request.POST["bio"]
-        contact = request.POST["contact"]
-
-        profile_image = request.FILES["profile_pic"]
-        profile_image = cloudinary.uploader.upload(profile_image)
-        profile_url = profile_image["url"]
-
-        user = User.objects.get(id=current_user.id)
-
-        
-        if Profile.objects.filter(user_id=current_user.id).exists():
-
-            profile = Profile.objects.get(user_id=current_user.id)
-            profile.profile_photo = profile_url
-            profile.bio = bio
-            profile.contact = contact
-            profile.save()
-        else:
-            profile = Profile(
-                user_id=current_user.id,
-                profile_photo=profile_url,
-                bio=bio,
-                contact=contact,
-            )
-            profile.save_profile()
-
-        user.first_name = first_name
-        user.last_name = last_name
-        user.username = username
-        user.email = email
-
-        user.save()
-
-        return redirect("/profile", {"success": "Profile Updated Successfully"})
-    else:
-        return render(request, "profile.html", {"danger": "Profile Update Failed"})
 
 @login_required(login_url="/accounts/login/")
 def save_project(request):
@@ -116,6 +70,21 @@ def pro(request):
         form = ProProjectForm()
     return render(request, 'pro.html', {"form": form})
 
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'create_profile.html', {"form": form, "title": title})
+
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user_id = user)
@@ -130,3 +99,18 @@ def update_profile(request,id):
             
     ctx = {"form":form}
     return render(request, 'update_profile.html', ctx)
+
+@login_required
+def search(request):
+
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        search_project = Project.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"search_project": search_project})
+
+    else:
+        message = "You haven't searched for any project"
+        return render(request, 'search.html',{"message1":message})
+
