@@ -35,6 +35,20 @@
             </div>
         </div>
     </div>
+
+
+    <div class="details">
+        <div class="first">
+          <h3>{{user.username}}</h3>
+          {% if request.user is user %}  {% endif %}
+          <div>
+            <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
+              Edit Profile
+            </a>
+          </div>
+        </div>
+    </div>
+    
             <div class="col-md-3">
                 <form action="/pro/project/">
                     <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)"value="Post a Project" />
