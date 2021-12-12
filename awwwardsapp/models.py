@@ -3,6 +3,9 @@ import datetime as dt
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
+import awwwardsapp
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_photo = CloudinaryField("image")
@@ -23,20 +26,30 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Project(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=600)
-    category = models.TextField(max_length=50,null=True)
+    category = models.TextField(max_length=50, null=True)
     image = CloudinaryField("image")
     url = models.URLField(null=True)
     location = models.CharField(max_length=50, default="Nairobi")
     date = models.DateTimeField(auto_now_add=True, null=True)
 
+    # @classmethod
+    # def search_by_title(cls, search_term):
+    #     awwwardsapp = cls.objects.filter(title__icontains=search_term)
+    #     return awwwardsapp
+
     @classmethod
-    def search_by_title(cls, search_term):
-        projects = cls.objects.filter(title__icontains=search_term)
-        return projects
+    def search_project_name(cls, search_term):
+        projects = cls.objects.filter(
+        title__icontains=search_term)
+        return projects    
+
+    def str(self):
+        return self.user.username
 
     @classmethod
     def get_project_by_id(cls, id):
