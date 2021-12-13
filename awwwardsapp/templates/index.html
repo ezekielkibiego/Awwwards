@@ -2,48 +2,78 @@
 
 {% block content %}
 {{block.super}}
-<br><br>
+<style>
+    .home {
+        background-image: url('https://images.unsplash.com/photo-1514820720301-4c4790309f46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXdhcmRzfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+</style>
+
+<br>
 
 <div class="container-fluid">
- 
-    <h1 class="text-center">Welcome Home</h1>
-    
+
+    <div class="home">
+        <h1 class="text-center">Welcome to Awwwards</1>
+            <div class="" style=" margin: 5%; padding: 10%;">
+
+                <div class="forms">
+                    <form class=" form" role="search" action="{% url 'search' %}">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" placeholder="Search projects by Title"
+                                name="search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"
+                                        style="color: white;"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+    </div>
     <div class="row">
         {% for pros in pro %}
-        <div class="col-md-4">
-            
+        <div class="col-md-6">
+    
             <div class="card-group">
                 <div class="card">
                     <p>{{user.username}}</p>
                     <a href="{% url 'project_details' pros.id %}">
-                        <img src="{{ pros.image.url }}"class="card-img-top responsive" alt="Personal">
+                        <img src="{{ pros.image.url }}" class="card-img-top responsive" alt="Personal">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">Title: {{pros.title}}</h5>
                         <p class="card-text">Description: {{pros.description}}</p>
                         <p class="card-text">Category: {{pros.category}}</p>
                         <p class="card-text">Category: {{pros.location}}</p>
-                        <a href="{{project.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View Project</a>
-
+                        <a href="{{project.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View
+                            Project</a>
+    
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Date: {{pros.date|date}}</small>
                     </div>
                     <div class="card-footer">
                         <form action="/project/project/">
-                            <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill" value="Post a Project" />
+                            <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill"
+                                value="Post a Project" />
                         </form>
                     </div>
                 </div>
-
+    
             </div>
-            
+    
         </div>
         {% endfor %}
     </div>
+    </div>
+    
 </div>
-
-
-
-
 {% endblock %}
