@@ -121,3 +121,5 @@ class RatingTestClass(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.rating, Rating))
+
+    
