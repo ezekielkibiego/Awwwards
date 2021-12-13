@@ -4,6 +4,18 @@
 
 
 <br><br><br>
+<style>
+    body{
+        font-family: 'Lato', global_font_string;
+        font-weight: 500;
+        background-color: #595d64;
+        color: whitesmoke;
+       
+    }
+    .card{
+        color: #595d64;
+    }
+</style>
 <div class="container">
 
 <div class="row text-center">
@@ -20,7 +32,7 @@
           <h5 class="card-title">{{ project.title }}</h5>
           <h5 class="card-title">{{ project.category }}</h5>
           <p class="card-text">
-            <a href="{{project.url}}">{{project.url}}</a>
+            <a href="{{project.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View Project</a>
           </p>
         </div>
     </div>
