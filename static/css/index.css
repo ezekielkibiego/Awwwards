@@ -12,40 +12,41 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-image: url('https://d3gvybjp3zjp3i.cloudfront.net/wp-content/uploads/2018/08/award.jpg');
+    /* background-image: url('https://image.freepik.com/free-vector/realistic-award-with-lights-golden-confetti-trophy-with-figurine-holding-star-illustration_1284-55118.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
+    background-color: rgb(214, 16, 16);
+    background-color: rgba(37, 37, 34, 0.741);
     overflow-x: hidden;
     transition: 0.5s;
   }
   
   .overlay-content {
     position: relative;
-    top: 25%;
+    top: 5%;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+  
   }
   
   .overlay a {
-    padding: 8px;
+  
     text-decoration: none;
-    font-size: 36px;
+    font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
   }
   
   .overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
+    color: #b31c6f;
   }
   
   .overlay .closebtn {
     position: absolute;
-    top: 20px;
     right: 45px;
-    font-size: 60px;
+    font-size: 20px;
   }
   
   @media screen and (max-height: 450px) {
