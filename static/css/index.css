@@ -1,8 +1,11 @@
 h1{
-    color: crimson;
+    color: whitesmoke;
 }
 body {
-    font-family: "Lato", sans-serif;
+  font-family: 'Lato', global_font_string;
+  font-weight: 500;
+  background-color: #595d64;
+  color: #595d64;
   }
   
   .overlay {
