@@ -1,0 +1,65 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+{% if pro.image %}
+
+<style>
+    .aimg{
+  width: 3%;
+  height: auto;
+}
+body{
+    
+    color: rgb(36, 33, 33);
+    margin-top: 3%;
+}
+</style>
+<div class="container-fluid">
+    
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="single-content">
+                    <h2 class="display-6 mt-4 headings">
+                        {{ pro.title }}
+                    </h2>
+                    
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <section class="single-top-header" style="height: 70vh; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{pro.image.url}})">
+    
+        {% else %}
+        <section class="single-top-header">
+            {% endif %}
+            
+        </section>
+        <section class="container-fluid">
+            <div>
+                <div class="row">
+                    <div class="">
+                        <p>{{ pro.description|safe }}</p>
+                        <p>{{ pro.category|safe }}</p>
+                        <p>{{ pro.location|safe }}</p>
+                        <p>{{ pro.date|date }}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </section>
+    <div>
+        
+        <p>By:</p>
+        <p> {% if pofile.profile_photo %}
+            <img src="{{ profile.profile_photo }}" alt="author" class="aimg mt-3" >
+            {% else %}
+            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png" alt="{{ user.username }}"
+                class="aimg">
+            {% endif %} {{ user.username }} </p>
+    </div>
+</div>
+{% endblock %}
