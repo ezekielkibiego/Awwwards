@@ -92,3 +92,17 @@ class Rating(models.Model):
 
     def _str_(self):
         return self.user.username
+
+    def update_rating(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        self.save()
+
+    def save_rating(self):
+        self.save()
+
+    def delete_rating(self):
+        self.delete()
+
+    def __str__(self):
+        return self.project
