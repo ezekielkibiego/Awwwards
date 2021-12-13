@@ -28,6 +28,11 @@ class ProfileTestClass(TestCase):
         self.profile.save_profile()
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles) > 0)
+
+    def test_create_method(self):
+        self.profile.create_profile()
+        profiles = Profile.objects.all()
+        self.assertTrue(len(profiles) > 0)
 class ProjectTestClass(TestCase):
     def setUp(self):
         user = User.objects.create(
