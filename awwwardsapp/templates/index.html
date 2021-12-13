@@ -5,6 +5,7 @@
 <br><br>
 
 <div class="container-fluid">
+ 
     <h1 class="text-center">Welcome Home</h1>
     <div class="row">
         {% for pros in pro %}
@@ -12,7 +13,7 @@
             
             <div class="card-group">
                 <div class="card">
-                    <p>{{pros.user}}</p>
+                    <p>{{user.username}}</p>
                     <img class="card-img-top" src="{{pros.image.url}}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{pros.title}}</h5>
