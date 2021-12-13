@@ -60,3 +60,11 @@ body {
     right: 35px;
     }
   }
+  .bg-dark{
+    outline: none;
+    border: none;
+    background-color: #595d64;
+    border-radius: 3%;
+    color: white;
+
+  }
