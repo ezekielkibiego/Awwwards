@@ -1,65 +1,120 @@
-
-
 {% extends "base.html" %}
 {% block content %}
-{% if pro.image %}
+{% if project.image %}
 
 <style>
-    .aimg{
-  width: 3%;
-  height: auto;
-}
-body{
-    
-    color: rgb(36, 33, 33);
-    margin-top: 3%;
-}
+    .aimg {
+        width: 10%;
+        height: auto;
+    }
+
+    body {
+
+        color: rgb(36, 33, 33);
+        margin-top: 6%;
+    }
+    .rating{
+        margin-top: 5%;
+    }
 </style>
 <div class="container-fluid">
-    
+    <div class="row">
+        <div class="col-md-4">
+        <p> {% if pofile.profile_photo %}
+            <img src="{{ profile.profile_photo }}" alt="author" class="aimg mt-3">
+            {% else %}
+            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"
+                alt="{{ user.username }}" class="aimg">
+            {% endif %} 
+            <p><b>{{ user.username }}</b></p>
+
+        </p>
+
+        </div>
+            <div class="col-md-8">
+                        <p>{{ project.description|safe }}</p>
+                        <p>{{ project.category|safe }}</p>
+                        <p>{{ project.location|safe }}</p>
+                        <p>{{ project.date|date }}</p>
+            </div>
+
+    </div>
     <div class="header">
         <div class="container-fluid">
             <div class="row">
                 <div class="single-content">
                     <h2 class="display-6 mt-4 headings">
-                        {{ pro.title }}
+                        {{ project.title }}
                     </h2>
-                    
+
                 </div>
             </div>
             <div class="col-md-2"></div>
         </div>
     </div>
-    <section class="single-top-header" style="height: 70vh; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{pro.image.url}})">
-    
+    <section class="single-top-header"
+        style="height: 70vh; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{project.image.url}})">
+
         {% else %}
         <section class="single-top-header">
             {% endif %}
-            
+
         </section>
-        <section class="container-fluid">
-            <div>
-                <div class="row">
-                    <div class="">
-                        <p>{{ pro.description|safe }}</p>
-                        <p>{{ pro.category|safe }}</p>
-                        <p>{{ pro.location|safe }}</p>
-                        <p>{{ pro.date|date }}</p>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-    </section>
-    <div>
         
-        <p>By:</p>
-        <p> {% if pofile.profile_photo %}
-            <img src="{{ profile.profile_photo }}" alt="author" class="aimg mt-3" >
-            {% else %}
-            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png" alt="{{ user.username }}"
-                class="aimg">
-            {% endif %} {{ user.username }} </p>
+    </section>
+    
+    <div class="row rating">
+        <div class="col-md-6">
+            <form action="{% url 'rate' project.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="Design">Design</label>
+                    <input type="number" class="form-control" name="design" min="0" max="10" value="0">
+                </div>
+                <div class="mb-3">
+                    <label for="Content">Content</label>
+                    <input type="number" class="form-control" name="content" min="0" max="10" value="0">
+                </div>
+                <div class="mb-3">
+                    <label for="Usability">Usability</label>
+                    <input type="number" class="form-control" name="usability" min="0" max="10" value="0">
+                </div>
+                <button class="btn btn-warning btn-sm" type="submit">Rate</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">
+                <b>Project Ratings</b></h2>
+       
+           <p>
+               {% for rate in rating %}
+           
+               <div class="row text-center">
+                   <div class="col-md-2">
+                       <p>{{user.username}}</p>
+                   </div>
+                   <div class="col-md-3">
+                       <p>Design: {{rate.design_rate}}</p>
+                   </div>
+                   <div class="col-md-3">
+                       <p>Content: {{rate.content_rate}}</p>
+                   </div>
+                   <div class="col-md-2">
+                       <p>Usability:{{rate.usability_rate}}</p>
+                   </div>
+                   <div class="col-md-2">
+                    <p>Avarage:{{rate.avarage_rate}}</p>
+                   </div>
+               </div>
+               {% empty %}
+               <p class="alert alert-danger" role="alert">No ratings yet!</p>
+               {% endfor %}
+       
+           </p>
+       </div>
     </div>
+    
 </div>
+
+
 {% endblock %}
