@@ -6,30 +6,31 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
             <div class="row">
-                <div class="col-md-4">
-                    <a class="navbar-brand" href="/" style=" color: white;">Home</a>
+                <div class="col-md-3">
+                    <a class="navbar-brand" href="/" style=" color: white;"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-md-3">
+                   
                     <div class="" style=" margin-left: 5%;">
 
-                        <form class="navbar-form" role="search" action="{% url 'search' %}">
-                
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" name="projects">
+                        <div class="forms">
+                            <form class=" form" role="search" action="{% url 'search' %}">
+                              <div class="input-group " >
+                                <input type="text" class="form-control" placeholder="Search projects by Title" name="search"  >
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="fa fa-search text-white"
-                                            aria-hidden="true"></i>
-                                    </button>
-                
+                                  <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></button>
                                 </div>
-                            </div>
-                
-                        </form>
+                              </div>
+                            </form>
+                            
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <ul class="navbar-nav mr-auto" style="margin-left: 45%;">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" style=" color: crimson;">
+                                aria-haspopup="true" aria-expanded="false" style=" color: white">
                                 Location
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,26 +42,26 @@
             
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     {% if user.is_authenticated %}
 
             <li class="dropdown btn btn-default">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"
-                    style="font-weight: 700;"><i class="far fa-user text-white"></i>
+                    ><i class="far fa-user text-white"></i>
         
                 </a>
-                <ul class="dropdown-menu" role="menu" style="font-weight: 700; text-decoration: none;">
+                <ul class="dropdown-menu" role="menu" style=" text-decoration: none;">
         
                     <li class="nav-item">
                         <a class="nav-link" href="/admin" style=" color: black;"
-                            style="font-weight: 700;">Dashboard</a>
+                            >Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/profile" style=" color: black;"
-                            style="font-weight: 700;">Profile</a>
+                            >Profile</a>
                     </li>
                     <li>
-                        <a class='btn btn-default' href="/accounts/register" style="font-weight: 700;">Register</a>
+                        <a class='btn btn-default' href="/accounts/register" >Register</a>
                     </li>
                     <li>
         
@@ -68,7 +69,7 @@
                             Password</a>
                     </li>
                     <li>
-                        <a class='btn btn-default' href="/logout" style="font-weight: 700;">Log Out</a>
+                        <a class='btn btn-default' href="/logout" >Log Out</a>
                     </li>
                 </ul>
             </li>
