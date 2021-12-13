@@ -37,11 +37,7 @@ class Project(models.Model):
     location = models.CharField(max_length=50, default="Nairobi")
     date = models.DateTimeField(auto_now_add=True, null=True)
 
-    # @classmethod
-    # def search_by_title(cls, search_term):
-    #     awwwardsapp = cls.objects.filter(title__icontains=search_term)
-    #     return awwwardsapp
-
+    
     @classmethod
     def search_project_name(cls, search_term):
         projects = cls.objects.filter(
