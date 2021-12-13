@@ -11,6 +11,11 @@
     margin-top: 3%;
     margin-bottom: 3%;
   }
+  button{
+        border: none;
+        border-radius: 3px;
+    
+    }
 </style>
 
 <div class="container register">
@@ -30,11 +35,11 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn btn-sm" value="Create Account">
+              <input type="submit" class="btn bg-dark text-white" value="Create Account">
             </div>
             <input type="hidden" name="next" value="{{next}}">
           </form>
-          <p class="mt-5">Already Have an Account, <a href="/accounts/login/" class="text-primary">Login</a></p>
+          <p class="mt-5">Already Have an Account, <a href="/accounts/login/" class="text-primary"><button class="bg-dark text-white">Register</button></a></p>
         </div>
       </div>
 
