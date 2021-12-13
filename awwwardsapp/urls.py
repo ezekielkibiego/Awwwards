@@ -14,5 +14,6 @@ urlpatterns = [
     path('update_profile/<int:id>',views.update_profile, name='update_profile'),
     path("project/<int:project_id>/", views.project_details, name="project_details"),
     path("rate/<int:id>",views.rate, name='rate'),
-    
+    path('api/projects/', views.ProjectList.as_view()),
+    path('api/profiles/',views.ProfileList.as_view())
 ]
