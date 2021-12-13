@@ -1,49 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
-<br><br>
+
 <style>
-    body{
-        background-color: crimson;
+   body{
+        font-family: 'Lato', global_font_string;
+        font-weight: 500;
+        background-color: #595d64;
+        color: whitesmoke;
+       
+    }
+    .card{
+        color: #595d64;
+        text-align: left;
+        border-radius: 10%;
     }
 
 </style>
+<br>
 <section class="profile container">
     <div class=" mt-5">
         <div class="row">
             
-                <div class="card col-md-6">
+                <div class="card col-md-6 text-left">
                     {% if profile.profile_photo %}
-                    <img src="{{profile.profile_photo.url}}" alt="" style="border-radius: 50%;">
+                    <img src="{{profile.profile_photo.url}}" alt="" style="border-radius: 50%; width: 50%; height: auto;">
                     {%else%}
                     <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
                         class="card-img-top" alt="My profile picture">
                     {% endif %}
-                    <div class="card-body text-center">
-                        <h4 class="card-text">
-                            {{ user.first_name }} {{ user.last_name }}
-                        </h4>
-                        <p>{{ user.username }}</p>
+                    <div class="card-body">
+                        
+                        <p>Username: {{ user.username }}</p>
                         
                         <p>
                             {% if profile.bio %}
-                            <small>{{ profile.bio }}</small>
+                            <small>Bio: {{ profile.bio }}</small>
                             {% else %}
                             <span class="text-danger">No about me</span>
                             {% endif %}
                         </p>
                         <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
                                 {{ user.date_joined }} </span></h6>
-                                <p>{{ profile.contact }}</p>
+                                <p>Contact: {{ profile.contact }}</p>
                         
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
                     <div class="details">
                         <div class="first">
-                          <h3>{{user.username}}</h3>
+                          <h3>Username: {{user.username}}</h3>
                           {% if request.user is user %}  {% endif %}
                           <div>
-                            <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
+                            <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-dark bg-dark text-white rounded-pill">
                               Edit Profile
                             </a>
                           </div>
