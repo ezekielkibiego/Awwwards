@@ -9,7 +9,6 @@ import cloudinary.api
 from .forms import ProProjectForm, ProfileForm, UpdateProfileForm
 from awwwardsapp.models import Profile
 from rest_framework import serializers
-from rest_framework.response import Response
 from rest_framework.views import APIView
 from .permissions import IsAdminOrReadOnly
 from awwwardsapp import serializer
