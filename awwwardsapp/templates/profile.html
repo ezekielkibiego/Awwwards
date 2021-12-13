@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <br><br>
-<br><br>
+<style>
+    body{
+        background-color: crimson;
+    }
+
+</style>
 <section class="profile container">
     <div class=" mt-5">
         <div class="row">
-            <div class="col-md-3">
-                <div class="card">
+            
+                <div class="card col-md-6">
                     {% if profile.profile_photo %}
                     <img src="{{profile.profile_photo.url}}" alt="" style="border-radius: 50%;">
                     {%else%}
@@ -32,28 +37,27 @@
                         
                     </div>
                 </div>
-            </div>
+                <div class="col-md-6 text-center">
+                    <div class="details">
+                        <div class="first">
+                          <h3>{{user.username}}</h3>
+                          {% if request.user is user %}  {% endif %}
+                          <div>
+                            <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
+                              Edit Profile
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+                    
+                            
+                </div>
+            
         </div>
     </div>
 
 
-    <div class="details">
-        <div class="first">
-          <h3>{{user.username}}</h3>
-          {% if request.user is user %}  {% endif %}
-          <div>
-            <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
-              Edit Profile
-            </a>
-          </div>
-        </div>
-    </div>
     
-            <div class="col-md-3">
-                <form action="/pro/project/">
-                    <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)"value="Post a Project" />
-                </form>
-            </div>
 </section>
 
 {% endblock %}
