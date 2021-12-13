@@ -127,3 +127,6 @@ def search_project(request):
         message = 'Not found'
         return render(request, 'search.html', {'danger': message})
 
+def project_details(request, project_id):
+    pro = Project.objects.get(id=project_id)
+    return render(request, "project_details.html", {"pro": pro})
