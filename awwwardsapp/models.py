@@ -79,3 +79,14 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    design_rate = models.IntegerField(default=0, blank=True, null=True)
+    usability_rate = models.IntegerField(default=0, blank=True, null=True)
+    content_rate = models.IntegerField(default=0, blank=True, null=True)
+    avarage_rate = models.IntegerField(default=0, blank=True, null=True)
+
+    def _str_(self):
+        return self.user.username
