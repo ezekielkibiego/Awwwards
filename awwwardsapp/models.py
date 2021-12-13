@@ -18,6 +18,9 @@ class Profile(models.Model):
     def create_profile(self):
         self.save()
 
+    def update_profile(self):
+        self.save()
+
     def delete_profile(self):
         self.delete()
 
