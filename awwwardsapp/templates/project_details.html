@@ -16,8 +16,32 @@
     .rating{
         margin-top: 5%;
     }
+    h2{
+        text-align: center;
+    }
 </style>
 <div class="container-fluid">
+    
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="">
+                    <h2 class="text-center">{{ project.title }}</h2>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <section class="single-top-header"
+        style="height: 70vh; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{project.image.url}})">
+
+        {% else %}
+        <section class="single-top-header">
+            {% endif %}
+
+        </section>
+        
+    </section>
     <div class="row">
         <div class="col-md-4">
         <p> {% if pofile.profile_photo %}
@@ -39,30 +63,6 @@
             </div>
 
     </div>
-    <div class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="single-content">
-                    <h2 class="display-6 mt-4 headings">
-                        {{ project.title }}
-                    </h2>
-
-                </div>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div>
-    <section class="single-top-header"
-        style="height: 70vh; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{project.image.url}})">
-
-        {% else %}
-        <section class="single-top-header">
-            {% endif %}
-
-        </section>
-        
-    </section>
-    
     <div class="row rating">
         <div class="col-md-6">
             <form action="{% url 'rate' project.id %}" method="post">
