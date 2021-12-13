@@ -3,6 +3,20 @@ from django.test import TestCase
 from .models import Project, Profile
 
 
+class ProfileTestClass(TestCase):
+    def setUp(self):
+        user = User.objects.create(
+            username="test_user"
+        )
+
+        self.profile = Profile(
+            bio="Test Profile_photo",
+            user=user,
+            contact="Test Contact",
+        )
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.profile, Profile))
 class ProjectTestClass(TestCase):
     def setUp(self):
         user = User.objects.create(
