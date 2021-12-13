@@ -60,7 +60,7 @@ def delete_project(request, id):
     return redirect("/profile", {"success": "Deleted Project Successfully"})
 
 @login_required(login_url='/accounts/login/')
-def pro(request):
+def project(request):
     if request.method == "POST":
         form = ProProjectForm(request.POST, request.FILES)
         if form.is_valid():
@@ -101,19 +101,6 @@ def update_profile(request,id):
     ctx = {"form":form}
     return render(request, 'update_profile.html', ctx)
 
-# @login_required
-# def search(request):
-
-#     if 'search' in request.GET and request.GET["search"]:
-#         search_term = request.GET.get("search")
-#         search_project = Project.search_by_title(search_term)
-#         message = f"{search_term}"
-
-#         return render(request, 'search.html',{"message":message,"search_project": search_project})
-
-#     else:
-#         message = "You haven't searched for any project"
-#         return render(request, 'search.html',{"message1":message})
 
 @login_required(login_url='/accounts/login/')
 def search_project(request):
@@ -128,5 +115,28 @@ def search_project(request):
         return render(request, 'search.html', {'danger': message})
 
 def project_details(request, project_id):
-    pro = Project.objects.get(id=project_id)
-    return render(request, "project_details.html", {"pro": pro})
+    project = Project.objects.get(id=project_id)
+    rating = Rating.objects.filter(project = project)
+    return render(request, "project_details.html", {"project": project, 'rating':rating})
+
+@login_required(login_url='/accounts/login/')
+def rate(request,id):
+    if request.method == 'POST':
+        project = Project.objects.get(id = id)
+        current_user = request.user
+        design_rate = request.POST['design']
+        content_rate = request.POST['content']
+        usability_rate = request.POST['usability']
+
+        Rating.objects.create(
+            project=project,
+            user=current_user,
+            design_rate=design_rate,
+            usability_rate=usability_rate,
+            content_rate=content_rate,
+            avarage_rate=round((float(design_rate)+float(usability_rate)+float(content_rate))/3,2),)
+
+        return render(request,"project_details.html",{"project":project})
+    else:
+        project = Project.objects.get(id = id) 
+        return render(request,"project_details.html",{"project":project})
