@@ -22,14 +22,15 @@
                         <h5 class="card-title">{{pros.title}}</h5>
                         <p class="card-text">{{pros.description}}</p>
                         <p class="card-text">{{pros.category}}</p>
-                        <a href="{{pros.url}}">{{pros.url}}</a>
+                        <a href="{{project.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View Project</a>
+
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">{{pros.date|date}}</small>
                     </div>
-                    <div>
+                    <div class="card-footer">
                         <form action="/project/project/">
-                            <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)"value="Post a Project" />
+                            <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill" value="Post a Project" />
                         </form>
                     </div>
                 </div>
