@@ -11,8 +11,9 @@ from awwwardsapp.models import Profile
 
 
 def index(request):
+    project = Project.objects.all()
     pro = Project.objects.all().order_by('-id')
-    return render(request, 'index.html',{'pro': pro})
+    return render(request, 'index.html',{'pro': pro, "project": project})
 
 
 @login_required(login_url="/accounts/login/")
@@ -100,17 +101,29 @@ def update_profile(request,id):
     ctx = {"form":form}
     return render(request, 'update_profile.html', ctx)
 
-@login_required
-def search(request):
+# @login_required
+# def search(request):
 
-    if 'search' in request.GET and request.GET["search"]:
-        search_term = request.GET.get("search")
-        search_project = Project.search_by_title(search_term)
-        message = f"{search_term}"
+#     if 'search' in request.GET and request.GET["search"]:
+#         search_term = request.GET.get("search")
+#         search_project = Project.search_by_title(search_term)
+#         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"search_project": search_project})
+#         return render(request, 'search.html',{"message":message,"search_project": search_project})
 
+#     else:
+#         message = "You haven't searched for any project"
+#         return render(request, 'search.html',{"message1":message})
+
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search').lower()
+        projects = Project.search_project_name(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'search.html', {'found': message, 'projects': projects})
     else:
-        message = "You haven't searched for any project"
-        return render(request, 'search.html',{"message":message})
+        message = 'Not found'
+        return render(request, 'search.html', {'danger': message})
 
