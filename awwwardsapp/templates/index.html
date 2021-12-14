@@ -51,18 +51,27 @@
                     <div class="card-body">
                         <h5 class="card-title">Title: {{pros.title}}</h5>
                         <p class="card-text">Location: {{pros.location}}</p>
-                        <a href="{{pros.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View
-                            Project</a>
+                        
     
                     </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Date: {{pros.date|date}}</small>
-                    </div>
-                    <div class="card-footer">
-                        <form action="/project/project/">
-                            <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill"
-                                value="Post a Project" />
-                        </form>
+                    <div class="row card-footer">
+                        <div class="col-md-4">
+                            <a href="{{pros.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View
+                                Project</a>
+                        </div>
+                        <div class="col-md-4">
+                            <form action="/project/project/">
+                                <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill"
+                                    value="Post a Project" />
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'project_details' pros.id %}"><button class="btn btn-outline-dark bg-dark text-white rounded-pill">Rate Project</button></a>
+    
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Date: {{pros.date|date}}</small>
+                        </div>
                     </div>
                 </div>
     
