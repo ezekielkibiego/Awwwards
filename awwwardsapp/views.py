@@ -78,6 +78,7 @@ def project(request):
         form = ProProjectForm()
     return render(request, 'pro.html', {"form": form})
 
+@login_required(login_url='/accounts/login/')
 def create_profile(request):
     current_user = request.user
     title = "Create Profile"
@@ -93,6 +94,7 @@ def create_profile(request):
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
 
+@login_required(login_url='/accounts/login/')
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user_id = user)
@@ -121,6 +123,7 @@ def search_project(request):
         message = 'Not found'
         return render(request, 'search.html', {'danger': message})
 
+@login_required(login_url='/accounts/login/')
 def project_details(request, project_id):
     project = Project.objects.get(id=project_id)
     rating = Rating.objects.filter(project = project)
