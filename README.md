@@ -17,6 +17,7 @@
 
 <img src="static/images/home.png">
 <img src="static/images/home2.png">
+<img src="static/images/nav.png">
 
  
 ## User Story  
