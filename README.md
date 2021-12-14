@@ -19,6 +19,7 @@
 <img src="static/images/home2.png">
 <img src="static/images/nav.png">
 <img src="static/images/search.png">
+<img src="static/images/profile.png">
 
  
 ## User Story  
