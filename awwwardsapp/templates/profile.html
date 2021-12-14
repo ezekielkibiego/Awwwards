@@ -50,21 +50,28 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <div class="details">
-                    <div class="first">
-                        <h3>Username: {{user.username}}</h3>
-                        {% if request.user is user %} {% endif %}
-                        <div>
-                            <a href="{%url 'update_profile' user.id %}"
-                                class="btn btn-outline-dark bg-dark text-white rounded-pill">
-                                Edit Profile
-                            </a>
+                <div class="row">
+                    <div class="col-md-4 details">
+                        <div class="first">
+                            <h3>Username: {{user.username}}</h3>
+                            {% if request.user is user %} {% endif %}
+                            <div>
+                                <a href="{%url 'update_profile' user.id %}"
+                                    class="btn btn-outline-dark bg-dark text-white rounded-pill">
+                                    Edit Profile
+                                </a>
+                            </div>
                         </div>
                     </div>
+    
+                    <div class="col-md-6">
+                        <form action="/project/project/">
+                            <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill b-text"
+                                value="Post a Project" />
+                        </form>
+                    </div>
                 </div>
-
-
-            </div>
+                </div>
 
         </div>
     </div>
@@ -89,12 +96,13 @@
         <div class="alert alert-info" role="alert">
             No Projects!
         </div>
+        
     </div>
     </div>
     {% endfor %}
     </div>
     </div>
-
+    
 </section>
 
 {% endblock %}
