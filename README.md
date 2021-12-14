@@ -15,6 +15,7 @@ https://awwwwardsmega.herokuapp.com/
 ## Screenshots 
 
 <img src="static/images/home.png">
+<img src="static/images/reg.png">
 <img src="static/images/login.png">
 <img src="static/images/home2.png">
 <img src="static/images/nav.png">
