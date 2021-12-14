@@ -15,7 +15,7 @@
   
 ## Screenshots 
 
-<img src="static/images/Screenshot (1).png">
+<img src="static/images/home.png">
 <img src="static/images/Screenshot (3).png">
 <img src="static/images/Screenshot (2).png">
 <img src="static/images/Screenshot (4).png">
