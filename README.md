@@ -11,8 +11,7 @@
 
 ##  Live Link  
  
- https://awwwardsmega.herokuapp.com/
-  
+https://awwwwardsmega.herokuapp.com/  
 ## Screenshots 
 
 <img src="static/images/home.png">
