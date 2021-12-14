@@ -57,6 +57,9 @@
                         <p>Description: {{ project.description|safe }}</p>
                         <p>Category: {{ project.category|safe }}</p>
                         <p>Location: {{ project.location|safe }}</p>
+                        <a href="{{project.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View
+                            Project</a>
+    
                         <p>Date: {{ project.date|date }}</p>
             </div>
 
