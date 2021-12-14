@@ -19,8 +19,9 @@ from rest_framework.response import Response
 
 def index(request):
     project = Project.objects.all()
+    latest_project = project[0]
     pro = Project.objects.all().order_by('-id')
-    return render(request, 'index.html',{'pro': pro, "project": project})
+    return render(request, 'index.html',{'pro': pro, "project_home": latest_project, "project": project})
 
 
 @login_required(login_url="/accounts/login/")
