@@ -14,15 +14,43 @@
 https://awwwwardsmega.herokuapp.com/  
 ## Screenshots 
 
+### Landing Page
 <img src="static/images/home.png">
+
+### Register Form
+
 <img src="static/images/reg.png">
+
+### Create Profile Form
+
 <img src="static/images/create.png">
+
+### Login Form
+
 <img src="static/images/login.png">
+
+### Home Page
+
 <img src="static/images/home2.png">
+
+### Navbar Page
+
 <img src="static/images/nav.png">
+
+### Search Project Page
+
 <img src="static/images/search.png">
+
+### User Profile Page
+
 <img src="static/images/profile.png">
+
+### Edit Profile Form
+
 <img src="static/images/edit.png">
+
+### Ratings page
+
 <img src="static/images/rate.png">
 
  
