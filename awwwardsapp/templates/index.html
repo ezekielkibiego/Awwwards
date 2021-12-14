@@ -18,7 +18,12 @@
 
     <div class="home">
         <h1 class="text-center">Welcome to Awwwards</1>
-            
+            <div class="">
+                <form action="/project/project/">
+                    <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill b-text"
+                        value="Post a Project" />
+                </form>
+            </div>
             <div class="" style=" margin: 5%; padding: 10%;">
 
                 <div class="forms">
@@ -55,17 +60,12 @@
     
                     </div>
                     <div class="row card-footer">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <a href="{{pros.url}}" class="btn btn-outline-dark bg-dark text-white rounded-pill">View
                                 Project</a>
                         </div>
-                        <div class="col-md-4">
-                            <form action="/project/project/">
-                                <input type="submit" class="btn btn-outline-dark bg-dark text-white rounded-pill"
-                                    value="Post a Project" />
-                            </form>
-                        </div>
-                        <div class="col-md-4">
+                        
+                        <div class="col-md-6">
                             <a href="{% url 'project_details' pros.id %}"><button class="btn btn-outline-dark bg-dark text-white rounded-pill">Rate Project</button></a>
     
                         </div>
