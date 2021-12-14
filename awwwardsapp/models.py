@@ -40,7 +40,7 @@ class Project(models.Model):
     category = models.TextField(max_length=50, null=True)
     image = CloudinaryField("image")
     url = models.URLField(null=True)
-    location = models.CharField(max_length=50, default="Nairobi")
+    location = models.CharField(max_length=50, default="Kenya")
     date = models.DateTimeField(auto_now_add=True, null=True)
 
     
