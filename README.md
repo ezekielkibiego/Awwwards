@@ -20,6 +20,7 @@ https://awwwwardsmega.herokuapp.com/
 <img src="static/images/search.png">
 <img src="static/images/profile.png">
 <img src="static/images/edit.png">
+<img src="static/images/rate.png">
 
  
 ## User Story  
