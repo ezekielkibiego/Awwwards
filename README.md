@@ -16,12 +16,8 @@
 ## Screenshots 
 
 <img src="static/images/home.png">
-<img src="static/images/Screenshot (3).png">
-<img src="static/images/Screenshot (2).png">
-<img src="static/images/Screenshot (4).png">
-<img src="static/images/Screenshot (5).png">
-<img src="static/images/Screenshot (6).png">
- 
+<img src="static/images/home2.png">
+
  
 ## User Story  
   
